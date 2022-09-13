@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HW7Project.Models.Orders>
+
+@{
+    ViewBag.Title = "會員訂單";
+    if (Session["memberID"] == null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout _Login.cshtml";
+    }
+}
+
+<table class="table text-center mt-2">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shipper.ShipVia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayType.PayTypeName)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="text-center">
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipper.ShipVia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayType.PayTypeName)
+            </td>
+        </tr>
+    }
+
+</table>
